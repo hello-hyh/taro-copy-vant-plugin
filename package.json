@@ -13,7 +13,9 @@
   },
   "files": [
     "src/",
-    "test/"
+    "test/",
+    "dist/index.d.ts",
+    "dist/index.js"
   ],
   "repository": {
     "type": "git",
@@ -36,5 +38,9 @@
   "dependencies": {
     "@types/fs-extra": "^9.0.11",
     "fs-extra": "^8.1.0"
-  }
+  },
+  "keywords": [
+    "taro",
+    "plugin"
+  ]
 }
