@@ -11,6 +11,10 @@
     "watch": "webpack --watch",
     "serve": "webpack serve"
   },
+  "files": [
+    "src/",
+    "test/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hello-hyh/taro-copy-vant-plugin.git"
