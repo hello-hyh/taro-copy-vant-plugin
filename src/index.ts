@@ -6,23 +6,23 @@ export default function (ctx = null, pluginOpts = { to: "", from: "" }) {
     ? pluginOpts.from
     : path.resolve(
         __dirname,
-        "../src/components/vant-weapp/" // test path
+        "code/taro-copy-vant-plugin/test/components/vant-weapp/" // test path
       );
   let _to = pluginOpts.to
     ? pluginOpts.to
     : path.resolve(
         __dirname,
-        "../dist/weapp/components/vant-weapp/" // test path
+        "code/taro-copy-vant-plugin/dist/weapp/components/vant-weapp/" // test path
       );
   if (ctx?.onBuildStart) {
     ctx.onBuildStart(() => {
       try {
-        copyVantWxsFile(_to, _from);
-        copyRequiredFile(_to, _from);
+        fse.remove(_to).then(() => {
+          copyVantWxsFile(_to, _from);
+          copyRequiredFile(_to, _from);
+        });
       } catch (error) {
         console.error(error);
-      } finally {
-        console.log("copy success");
       }
     });
   } else {
