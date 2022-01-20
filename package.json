@@ -1,6 +1,6 @@
 {
   "name": "taro-copy-vant-plugin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "taro-copy-vant-plugin",
   "main": "./dist/index.js",
   "scripts": {

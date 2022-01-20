@@ -38,8 +38,8 @@ export function copyVantWxsFile(
   const _fileName = `${defaultFileName}.${defaultFileExtName}`;
   fs.readdir(from, (err, files) => {
     files.forEach((dirName) => {
-      const from_path = path.join(from, dirName) + `\\${_fileName}`;
-      const to_path = path.join(to, dirName) + `\\${_fileName}`;
+      const from_path = path.join(path.join(from, dirName), _fileName);
+      const to_path = path.join(path.join(to, dirName), _fileName);
       fs.promises
         .access(from_path)
         .then(() => {
@@ -61,7 +61,7 @@ export function copyRequiredFile(to, from) {
   fse.mkdirs(toWxsPath).then(() => {
     fs.promises.readdir(fromWxsPath).then((files) => {
       for (const fName of files) {
-        fse.copy(fromWxsPath + `\\${fName}`, toWxsPath + `\\${fName}`);
+        fse.copy(path.join(fromWxsPath, fName), path.join(toWxsPath, fName));
       }
     });
   });
