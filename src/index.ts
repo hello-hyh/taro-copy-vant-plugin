@@ -43,6 +43,9 @@ export function copyVantWxsFile(
       fs.promises
         .access(from_path)
         .then(() => {
+          /* TODO: JSFIX could not patch the breaking change:
+          Creating a directory with fs-extra no longer returns the path 
+          Suggested fix: The returned promise no longer includes the path of the new directory */
           fse.mkdirs(path.join(to, dirName)).then(() => {
             fse.copy(from_path, to_path, (err) => {
               if (err) throw err;
@@ -58,6 +61,9 @@ export function copyRequiredFile(to, from) {
   const fromCommonStylePath = path.join(from, "common/style");
   const toWxsPath = path.join(to, "wxs");
   const toCommonStylePath = path.join(to, "common/style");
+  /* TODO: JSFIX could not patch the breaking change:
+  Creating a directory with fs-extra no longer returns the path 
+  Suggested fix: The returned promise no longer includes the path of the new directory */
   fse.mkdirs(toWxsPath).then(() => {
     fs.promises.readdir(fromWxsPath).then((files) => {
       for (const fName of files) {
@@ -65,6 +71,9 @@ export function copyRequiredFile(to, from) {
       }
     });
   });
+  /* TODO: JSFIX could not patch the breaking change:
+  Creating a directory with fs-extra no longer returns the path 
+  Suggested fix: The returned promise no longer includes the path of the new directory */
   fse.mkdirs(toCommonStylePath).then(() => {
     fse.copy(fromCommonStylePath, toCommonStylePath);
   });
